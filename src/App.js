@@ -1,5 +1,6 @@
 import React from 'react';
 import Upload from './components/Upload'
+import Canvas from './components/Canvas'
 import './App.css';
 
 function App() {
