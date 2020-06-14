@@ -112,7 +112,7 @@ const Upload = () => {
                     />
                 </div> : <></>
             }
-            <div>
+            <div style={{display : 'none'}}>
                 {
                     croppedImgUrl && <img src={croppedImgUrl} />
                 }

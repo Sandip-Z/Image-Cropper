@@ -14,6 +14,7 @@ const Canvas = ({image, getCroppedImageBlob, dimension}) => {
     const [sx, setSx] = useState(50)
     const [sy, setSy] = useState(50)
     const [crop, setCrop] = useState(false);
+    const [showCropButton, setShowCropButton] = useState(false)
 
 
     useEffect(() => {
@@ -77,8 +78,12 @@ const Canvas = ({image, getCroppedImageBlob, dimension}) => {
     const handleMouseUp = e => {
         e.preventDefault()
         setStartDraw(false)
+        setShowCropButton(true);
+        // console.log({x,y,sx,sy})
+    }
+
+    const setCropOn = () => {
         setCrop(true)
-        console.log({x,y,sx,sy})
     }
 
     const handleMouseMove = e => {
@@ -117,6 +122,7 @@ const Canvas = ({image, getCroppedImageBlob, dimension}) => {
         >
 
         </canvas>
+        <button onClick={setCropOn}>Crop</button>
         </>
     )
 }
