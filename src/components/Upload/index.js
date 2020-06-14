@@ -11,6 +11,7 @@ const Upload = () => {
     const [alt, setAlt] = useState()
     const [title, setTitle] = useState()
     const [fileUrl, setFileUrl] = useState()
+    const [imgDimension, setImgDimension] = useState()
     const imageUploadRef = useRef()
 
     const handleImageChange = event => {
@@ -56,6 +57,12 @@ const Upload = () => {
             const objectUrl = blobToImage(file)
             setFileUrl(objectUrl)
             setFileName(file.name)
+            const img = new Image();
+            img.onload = function(){
+                // console.log(img.width, img.height);
+                setImgDimension({width : img.width, height : img.height})
+            }
+            img.src = objectUrl
             // console.log(file)
         }
     }, [file])
@@ -76,7 +83,11 @@ const Upload = () => {
                     fileUrl ? <>
                         <h1>{fileName}</h1>
                         {/* <img src={fileUrl} width={750} /> */}
-                        <Canvas image={croppedImgUrl || fileUrl} getCroppedImageBlob={handleCroppedImage} />
+                        <Canvas 
+                            image={croppedImgUrl || fileUrl} 
+                            getCroppedImageBlob={handleCroppedImage} 
+                            dimension={imgDimension}
+                            />
                     </> : <></>
                 }
             </div>

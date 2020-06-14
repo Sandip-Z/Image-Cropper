@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 // import image from '../../assests/image/image.png'
 
-const Canvas = ({image, getCroppedImageBlob}) => {
+const Canvas = ({image, getCroppedImageBlob, dimension}) => {
 
     const [startDraw, setStartDraw] = useState(false)
     const [croppedImg, setCroppedImg] = useState(undefined)
@@ -15,6 +15,14 @@ const Canvas = ({image, getCroppedImageBlob}) => {
     const [sy, setSy] = useState(50)
     const [crop, setCrop] = useState(false);
 
+
+    useEffect(() => {
+        if(dimension && dimension.height && dimension.width){
+            setCanvasHeight(dimension.height);
+            setCanvasWidth(dimension.width);
+        }
+    }, [dimension])
+
     useEffect(() => {
         const context = myCanvas.current.getContext('2d')
         setCtx(context)
@@ -24,6 +32,8 @@ const Canvas = ({image, getCroppedImageBlob}) => {
         myCanvas.current.style.background = `url('${image}')`
         myCanvas.current.style.backgroundRepeat = 'no-repeat'
         myCanvas.current.style.backgroundSize = 'cover'
+        // myCanvas.current.style.maxHeight = '100%',
+        // myCanvas.current.style.maxWidth = '100%'
         setCrop(false);
     }, [image])
 
@@ -43,7 +53,6 @@ const Canvas = ({image, getCroppedImageBlob}) => {
                 const img = new Image()
                 img.onload = function(e){
                     e.preventDefault()
-                    // ctx.clearRect(0,0,canvasWidth, canvasHeight)
                     setCanvasWidth(sx)
                     setCanvasHeight(sy)
                     myCanvas.current.setAttribute('style', null)
@@ -96,7 +105,15 @@ const Canvas = ({image, getCroppedImageBlob}) => {
             onMouseDown={handleMouseDown} 
             onMouseUp={handleMouseUp} 
             onMouseMove={handleMouseMove}
-            style={{background : `url('${image}')`, backgroundRepeat : 'no-repeat', backgroundSize:'cover'}}
+            style={
+                {
+                    background : `url('${image}')`, 
+                    backgroundRepeat : 'no-repeat', 
+                    backgroundSize:'cover',
+                    maxHeight : '100%',
+                    maxWidth : '100%'
+                }
+            }
         >
 
         </canvas>
