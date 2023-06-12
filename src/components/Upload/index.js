@@ -31,17 +31,10 @@ const Upload = () => {
         setCroppedImg(blob)
         const croppedUrl = blobToImage(blob);
         setCroppedImgUrl(croppedUrl);
-        console.log(croppedUrl);
     }
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log({
-            file : croppedImg || file, 
-            fileName, 
-            alt, 
-            title
-        })
     }
 
     const blobToImage = blob => {
@@ -59,36 +52,29 @@ const Upload = () => {
             setFileName(file.name)
             const img = new Image();
             img.onload = function(){
-                // console.log(img.width, img.height);
                 setImgDimension({width : img.width, height : img.height})
             }
             img.src = objectUrl
-            // console.log(file)
         }
     }, [file])
 
     return (
         <>
-            <div style={{display : 'flex',justifyContent : 'center'}}>
-            <form onSubmit={handleSubmit}>
-                <Input type="file" onChange={handleImageChange} ref={imageUploadRef}/>
-                <Input type="submit" />
-                {
-                    fileUrl ? <button onClick={handleClearImage}>Clear Image</button> : <></>
-                }
-            </form>
-            </div>
             <div style={{marginTop : 25}}>
                 {
                     fileUrl ? <>
                         <h1>{fileName}</h1>
-                        {/* <img src={fileUrl} width={750} /> */}
                         <Canvas 
                             image={croppedImgUrl || fileUrl} 
                             getCroppedImageBlob={handleCroppedImage} 
                             dimension={imgDimension}
-                            />
-                    </> : <></>
+                        />
+                        <button onClick={handleClearImage}>Clear Image</button>
+                    </> : <div style={{display : 'flex',justifyContent : 'center'}} className='upload-form-wrapper'>
+                            <form onSubmit={handleSubmit}>
+                                <Input type="file" onChange={handleImageChange} ref={imageUploadRef}/>
+                            </form>
+                            </div>
                 }
             </div>
             {
