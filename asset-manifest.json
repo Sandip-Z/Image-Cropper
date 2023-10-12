@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Image-Cropper/static/css/main.4b863b34.chunk.css",
+    "main.js": "/Image-Cropper/static/js/main.bd80e1b2.chunk.js",
+    "main.js.map": "/Image-Cropper/static/js/main.bd80e1b2.chunk.js.map",
+    "runtime-main.js": "/Image-Cropper/static/js/runtime-main.fbcc8d25.js",
+    "runtime-main.js.map": "/Image-Cropper/static/js/runtime-main.fbcc8d25.js.map",
+    "static/js/2.e512d673.chunk.js": "/Image-Cropper/static/js/2.e512d673.chunk.js",
+    "static/js/2.e512d673.chunk.js.map": "/Image-Cropper/static/js/2.e512d673.chunk.js.map",
+    "index.html": "/Image-Cropper/index.html",
+    "precache-manifest.a461256d921eb5259d368a8edfff51bf.js": "/Image-Cropper/precache-manifest.a461256d921eb5259d368a8edfff51bf.js",
+    "service-worker.js": "/Image-Cropper/service-worker.js",
+    "static/css/main.4b863b34.chunk.css.map": "/Image-Cropper/static/css/main.4b863b34.chunk.css.map",
+    "static/js/2.e512d673.chunk.js.LICENSE.txt": "/Image-Cropper/static/js/2.e512d673.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fbcc8d25.js",
+    "static/js/2.e512d673.chunk.js",
+    "static/css/main.4b863b34.chunk.css",
+    "static/js/main.bd80e1b2.chunk.js"
+  ]
+}
